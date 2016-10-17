@@ -373,6 +373,8 @@ namespace Dapper
             }
             if (typeMap.TryGetValue(type, out dbType))
             {
+                // override the simple type handler 
+                typeHandlers.TryGetValue(type, out handler);
                 return dbType;
             }
             if (type.FullName == LinqBinary)
